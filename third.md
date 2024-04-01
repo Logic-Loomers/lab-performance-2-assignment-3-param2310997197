@@ -1,31 +1,38 @@
 Assume you oversee a small library and would like to develop a program that looks up books using their ISBNs. A list of books with their corresponding ISBN digits is in front of you. After the librarian inputs an ISBN, your software will look through the list to locate the relevant book.  The book's title and other details will be shown if the book is located. A notice stating that the book is not available in the library will appear if it cannot be located.
 code:
-#include <iostream>
-#include <string>
+#include<iostream>
 using namespace std;
-int main() {
-    cout<<"Parampreet Singh 2310997197";
-    string library[][4] = {
-        {"978-0545139700", "Harry Potter and Sorcerer's Stone", "J.K. Rowling", "Fantasy"},
-        {"978-0439554930", "Harry Potter and Chamber of Secrets", "J.K. Rowling", "Fantasy"},
-        {"978-0439064873", "Harry Potter and Prisoner of Azkaban", "J.K. Rowling", "Fantasy"},
-    };
-    cout << "\nEnter the ISBN of the book you want to search for: ";
-    string isbn;
-    cin >> isbn;
-    bool found = false;
-    for (const auto& book : library) {
-        if (book[0] == isbn) {
-            found = true;
-            cout << "Book Found!" << endl;
-            cout << "Title: " << book[1] << endl;
-            cout << "Author: " << book[2] << endl;
-            cout << "Genre: " << book[3] << endl;
-            break;
+
+class locate{
+    long long int isbn[5]={9780061120084,9780316769488,9780743273565,9780486284736,9780590353427};
+    string book [5]={"To Kill a Mockingbird","1984","The Catcher in the Rye","The Great Gatsby","Pride and Prejudice"};
+    string author[5]={"Harper Lee","George Orwell","J.D. Salinger","F. Scott Fitzgerald"," Jane Austen"};
+    long long int isbn_no;
+ public:
+        void get(){
+            cout<<"enter the isbn number of the book that you want : "<<endl;
+            cin>>isbn_no;
+            cout<<endl;
         }
-    }
-    if (!found) {
-        cout << "Book with ISBN " << isbn << " not available in the library." << endl;
-    }
+        void locates(){
+            int n=0;
+            for(int i=0;i<5;i++){
+                if(isbn_no==isbn[i]){
+                    n=1;
+                    cout<<"Your book : "<<book[i]<<endl;
+                    cout<<"Author : "<<author[i]<<endl;
+  break;
+        }
+      }
+            if(n==0){
+                    cout<<"book not found "<<endl;
+                }
+        }
+};
+int main(){
+    locate l1;
+    l1.get();
+    l1.locates();
+
     return 0;
 }
